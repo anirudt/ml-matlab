@@ -1,0 +1,17 @@
+========================================================================================================
+Steps for Supervised Learning:
+1. Prepare Data
+2. Choose an Algorithm
+3. Fit a model
+4. Choose a validation model
+5. Examine fit and update until satisfied
+6. Use fitted model for predictions
+
+========================================================================================================
+List of useful functions:
+resubLoss
+kfoldLoss
+crossval
+
+Go to pruning later on. First, examine the data w/o validation. We will slowly build up
+our learning process.
