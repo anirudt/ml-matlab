@@ -1,0 +1,19 @@
+function Phi = designMatrix(X,basis,varargin)
+% Phi = designMatrix(X,basis)
+% Phi = designMatrix(X,'polynomial',degree)
+% Phi = designMatrix(X,'gaussian',Mu,s)
+%
+% Compute the design matrix for input data X
+% X is n-by-d
+% Mu is k-by-d
+
+if strcmp(basis,'polynomial')
+  k = varargin{1};
+  Phi = degexpand(X,k);
+elseif strcmp(basis,'gaussian')
+  Mu = varargin{1};
+  s = varargin{2};
+  Phi = grbf(X,Mu,s);
+else
+  error('Unknown basis type');
+end
