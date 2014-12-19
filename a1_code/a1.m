@@ -25,3 +25,28 @@ minj
 t_est = polyval(minp, X_n(:,mini),minj);
 plot(t_est, t);
 norm(t-t_est)/392
+
+% Now, we implement regularization. We assume a poly of degree eight 
+% and loop for the attribute and lambda [regularization parameter].
+
+lambda = [0,0.01,0.1,1,10,100,1000];
+min = 1000000
+
+for i=1:7
+    for j=1:7
+        [p,S,u] = polyfit(X_n(:,i),t,8);
+        [y_est,delta] = polyval(p,X_n(:,i),S);
+        delta = delta + lambda(j)*norm(X_n(:,i))^2;
+        if delta<min
+            min=delta;
+            minl=lambda(j);
+            mini=i;
+        end
+    end
+end
+mini
+minl
+t_est=polyval(minp,X_n(:,mini),8);
+norm(t-t_est)/392
+
+    
