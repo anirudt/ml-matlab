@@ -5,6 +5,8 @@ min = 10000000
 Xtest = X_n(1:100,:);
 p = X_n;
 u = zeros(1,7);
+
+%Following is the Gaussian basis function for linear regression.
 for i=1:7
     u(i) = X_n(randsample(392,1),i);
     p(:,i) = exp(dist2(X_n(:,i),u(i))/8);
